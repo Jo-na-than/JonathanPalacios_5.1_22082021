@@ -118,29 +118,41 @@ send_checkout.addEventListener("click", async function() { // Ecouteur d'évène
 
     let products = []; // Initialise un tableau des articles
     let cart_products = JSON.parse(localStorage.getItem("panier")); // Récupère les articles du panier
-        
 
+    for (cart_product of cart_products){ // Lecture du tableau des article du panier
+        products.push(cart_product.id); // Ajoute au tableau de produits les ids des articles du panier
+    }
+    // --- Créations de l'objet à envoyer au serveur ---
+    let formData = {
+        contact: {
+            firstName: firstname_form_value,
+            lastName: lastName_form_value,
+            address: address_form_value,
+            city: city_form_value,
+            email: email_form_value
+        },
+        products: products
+    }
+    // --- FIN Créations de l'objet à envoyer au serveur ---
 
-
-
-
-
-    })
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    if(regexFirstname == true && regexName == true && regexAdress == true && regexCity == true && regexEmail == true){ // Test le bon remplissage du formulaire
+        // --- Envoi au serveur de l'objet par la méthode post ---
+        await fetch('http://localhost:3000/api/cameras/order', {
+            method: "POST",
+            headers: {"Content-type": "application/json; charset=UTF-8"},
+            body: JSON.stringify(formData)
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            let order_Id = data.orderId; // Stock l'id de la commande
+            add_orderId_to_localstorage(order_Id); // Appel de la fonction qui ajoute l'id de commande au localStorage
+            window.location.href = "checkout.html"; // Redirection vers la page commande
+        })
+        .catch(function(error) {
+            console.log(error); // Affiche l'erreur
+        });
+        // --- FIN Envoi au serveur de l'objet par la méthode post ---
+    }
+});
