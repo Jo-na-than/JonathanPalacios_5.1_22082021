@@ -40,9 +40,9 @@ function displayCamera(objetCamera) { // Fonction qui affiche les informations d
 }
 
 function getId(){ // Fonction qui récupère l'id de l'article par l'url de la page
-    const url_id_product = window.location.search; //Récupère l'id avec "?"
-    const id_product = url_id_product.slice(1); //Supprime "?"
-    return id_product; //Retourne l'id de la page
+    const url_id_product = window.location.search; // Récupère l'id avec "?"
+    const id_product = url_id_product.slice(1); // Supprime "?"
+    return id_product; // Retourne l'id de la page
 }
 
 
