@@ -155,4 +155,31 @@ send_checkout.addEventListener("click", async function() { // Ecouteur d'évène
         });
         // --- FIN Envoi au serveur de l'objet par la méthode post ---
     }
+
 });
+
+let deleteAll = document.querySelector("#deletecartProducts"); // Lier le bouton effacer le panier à une variable
+deleteAll.addEventListener("click", async function() { // Ecouteur d'évènement au clic sur le bouton effacer le panier
+    localStorage.removeItem("panier"); // Supprimer le contenu du panier
+    window.location.href= "panier.html"; // Rediriger vers la page panier
+});
+
+
+let buttons = document.querySelectorAll(".button"); // Lier les boutons supprimer un article à une variable
+for (let button of buttons) { // Lecture des boutons
+    button.addEventListener('click', async function() { // Ecouteur d'évènement au clic sur un bouton supprimer du panier
+        let cart_products = JSON.parse(localStorage.getItem("panier")); // Stock les articles du panier 
+        let id_product = button.id.split('&'); // Stock l'id du produit par le lien du bouton
+        let button_id_product = id_product[0]; //Stock la 1ere partie de l'id du bouton = id du produit
+        let button_modele_product = id_product[1]; // Stock la 2e partie de l'id du bouton = modele du produit
+        for (i=0; i<cart_products.length; i++) { // Lecture du tableau des produits
+            if(cart_products[i].id == button_id_product && cart_products[i].modele == button_modele_product) { // Test id et modele du bouton sont égaux à id et modele de l'article du panier
+                cart_products.splice(i, 1); // Supprime l'article du panier
+            }
+        }
+        localStorage.removeItem("panier"); // Supprime le panier actuel
+        localStorage.setItem("panier", JSON.stringify(cart_products)); // Recréer le nouveau panier actualisé
+        window.location.href="panier.html"; // Redirection vers la page panier
+        console.log(button);
+    });
+}
