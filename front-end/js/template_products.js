@@ -34,12 +34,14 @@ function displayCamera(objetCamera) { // Fonction qui affiche les informations d
     document.getElementById("cameraprice").innerHTML += price+'€'; // Intègre le prix de l'article
     document.getElementById("cameradescription").innerHTML += objetCamera.description; // Intègre la description de l'article
     modeles = objetCamera.modeles; // Stock les modèles du produit 
+    document.getElementById("inlineFormCustomSelect").innerHTML = ""; // permet de supprimer le champ vide du code HTMl
+    console.log(modeles)
     for (modele of modeles){ // Lecture du tableau des modèles
         document.getElementById("inlineFormCustomSelect").innerHTML += '<option value="'+modele+'">'+modele+'</option>'; // Intègre les modèles de l'article
     }
 }
 
-function getId(){ // Fonction qui récupère l'id de l'article par l'url de la page
+function getId() { // Fonction qui récupère l'id de l'article par l'url de la page
     const url_id_product = window.location.search; // Récupère l'id avec "?"
     const id_product = url_id_product.slice(1); // Supprime "?"
     return id_product; // Retourne l'id de la page
