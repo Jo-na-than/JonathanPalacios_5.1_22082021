@@ -1,4 +1,4 @@
-.card-camera:hover {
+.card-camera :hover {
     text-decoration:none;
 }
 
@@ -10,7 +10,7 @@
     background: #9c6dfa!important;
     border: none;
 }
-.btn-primary:hover {
+.btn-primary :hover {
     background: #ab85f8!important;
     border: none;
 }
