@@ -1,4 +1,4 @@
-main();
+main(); // page regroupant les fonctions de validations du panier
 
 function main() {
     let orderId = JSON.parse(localStorage.getItem("order")); // Stock l'id de la commande

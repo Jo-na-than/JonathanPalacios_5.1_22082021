@@ -1,4 +1,4 @@
-main();
+main(); // page regroupant les differentes fonction d'affichage et de promesse ainsi que les variables + regex
 
 async function main() {
     displayCardProduct(); // Appel de la fonction qui affiche les articles du panier
@@ -96,25 +96,25 @@ function wrongContent(input) { // Fonction qui détermine la couleur du champs s
 let send_checkout = document.querySelector(".send_checkout"); // Lier le bouton valider la commande à une variable
 send_checkout.addEventListener("click", async function() { // Ecouteur d'évènement au clic sur le bouton Valider la commande
 
-    let firstname_form_value = document.querySelector("#firstName").value; // Stock la valeur rentré dans prenoim
-    let firstname_form = document.querySelector("#firstName").id; // Stock l'imput prenom
-    let regexFirstname = regexNomPrenomVille(firstname_form_value,firstname_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'imput
+    let firstname_form_value = document.querySelector("#firstName").value; // Stock la valeur rentré dans prenom
+    let firstname_form = document.querySelector("#firstName").id; // Stock l'input prenom
+    let regexFirstname = regexNomPrenomVille(firstname_form_value,firstname_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'input
 
     let lastName_form_value = document.querySelector("#lastName").value; // Stock la valeur rentré dans nom
     let lastName_form = document.querySelector("#lastName").id; // Stock l'imput nom
-    let regexName = regexNomPrenomVille(lastName_form_value,lastName_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'imput
+    let regexName = regexNomPrenomVille(lastName_form_value,lastName_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'input
 
     let address_form_value = document.querySelector("#address").value; // Stock la valeur rentré dans adresse
-    let address_form = document.querySelector("#address").id; // Stock l'imput adresse
-    let regexAdress = regexAdresse(address_form_value,address_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'imput
+    let address_form = document.querySelector("#address").id; // Stock l'input adresse
+    let regexAdress = regexAdresse(address_form_value,address_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'input
 
     let city_form_value = document.querySelector("#city").value; // Stock la valeur rentré dans ville
     let city_form = document.querySelector("#city").id; // Stock l'imput ville
-    let regexCity = regexNomPrenomVille(city_form_value,city_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'imput
+    let regexCity = regexNomPrenomVille(city_form_value,city_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'input
 
     let email_form_value = document.querySelector("#email").value; // Stock la valeur rentré dans email
     let email_form = document.querySelector("#email").id; // Stock l'imput email
-    let regexEmail = regexMail(email_form_value,email_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'imput
+    let regexEmail = regexMail(email_form_value,email_form); // Stock true ou false selon si le regex est respecté + change la couleur de l'input
 
     let products = []; // Initialise un tableau des articles
     let cart_products = JSON.parse(localStorage.getItem("panier")); // Récupère les articles du panier

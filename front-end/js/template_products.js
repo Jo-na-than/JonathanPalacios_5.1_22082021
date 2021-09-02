@@ -1,4 +1,4 @@
-main();
+main(); // page ou sont declarée les fonction asynchrone, les promesses et modification via communication avec le DOM
 
 async function main() {
     const id_product = await getId(); // Récupère l'id de l'article par l'url de la page
@@ -67,7 +67,7 @@ function add_to_localStorage(infosCamera,camera_localStorage){ // Fonction qui a
         if(camera_in_local.id == infosCamera.id && camera_in_local.modele == infosCamera.modele){ // Test si l'article est déjà au panier en comparant l'id et le modèle
             let quantity_local = parseFloat(camera_in_local.quantity); // Stock le nombre quantité déjà dans le panier
             let quantity_choosed = parseFloat(infosCamera.quantity); // Stock le nombre quantité de la page
-            quantity_local += quantity_choosed; // Addictionner quantité panier et page
+            quantity_local += quantity_choosed; // Additionne quantité panier et page
             camera_in_local.quantity = quantity_local; // Passer la quantité en local à celle du panier
             flag = 1; // Activer le flag
         };

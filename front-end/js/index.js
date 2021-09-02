@@ -1,20 +1,20 @@
-main();
+main(); // page ou sont definis les fonctions utilisant le localStorage
 
 async function main() {
-    localStorage.removeItem('cameras'); // Supprimer les article du localStorage
+    localStorage.removeItem('cameras'); // Supprime les article du localStorage
     tab_cameras = []; // Initialisation du tableau d'articles
     const cameras = await getCameras(); // Appel de la fonction qui retourne les articles de la base de données
 
-    for (camera of cameras) { // Boucle sur tout les articles
+    for (camera of cameras) { // Boucle sur tous les articles
         displayCamera(camera); // Appel de la fonction qui affiche les articles
         localstorage(camera,tab_cameras); // Ajout de l'article au tableau d'article du localStorage
     }
 
-    localStorage.setItem('cameras', JSON.stringify(tab_cameras)); // Actualiser les articles du localStorage
+    localStorage.setItem('cameras', JSON.stringify(tab_cameras)); // Actualise les articles du localStorage
 }
 
 function getCameras() { // Fonction qui retourne les articles de la base de données
-    return fetch("http://localhost:3000/api/cameras") // Récupère la liste des articles
+    return fetch("http://localhost:3000/api/cameras") // Récupère la liste des articles sur l'API concernée et le port 3000
     .then(function(resultBody) { 
         return resultBody.json(); // Retourne le résultat de la promesse
     })
